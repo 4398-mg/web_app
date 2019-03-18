@@ -16,11 +16,10 @@ app.debug = True
 manager = Manager(app)
 
 # for mongodb use
-mongo_url = ('mongodb://%s:%s@ds111063.mlab.com'
-             ':28310/cfg18_dev_db' % (app.config['DB_USER'],
-                                        app.config['DB_PASS']))
+mongo_url = ('mongodb://%s:%s@ds131905.mlab.com:31905/music_gen'
+        % ('lawja', 'sqlAlchemyi5n1c3!'))
 client = MongoClient(mongo_url, connect=False)
-
+print(client)
 
 def make_shell_context():
     return dict(app=app)
