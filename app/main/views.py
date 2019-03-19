@@ -9,4 +9,4 @@ from . import main
 @main.route('/')
 def index():
     db = client
-    return render_template('index.html')
+    return render_template('index.html', app=app)

@@ -17,12 +17,14 @@ manager = Manager(app)
 
 # for mongodb use
 mongo_url = ('mongodb://%s:%s@ds131905.mlab.com:31905/music_gen'
-        % ('lawja', 'sqlAlchemyi5n1c3!'))
+             % ('lawja', 'sqlAlchemyi5n1c3!'))
 client = MongoClient(mongo_url, connect=False)
 print(client)
 
+
 def make_shell_context():
     return dict(app=app)
+
 
 @manager.option('-h', '--host', dest='host', default='0.0.0.0')
 @manager.option('-p', '--port', dest='port', type=int, default=1337)
