@@ -85,7 +85,8 @@
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
 
   <script>
-    var api_url = "{{ app.config['API_URL'] }}";
+    var api_url = "http://{{ app.config['API_URL'] }}";
+    console.log(api_url)
   </script>
   <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
   <script>

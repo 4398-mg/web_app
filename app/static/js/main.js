@@ -48,8 +48,8 @@ $(document).ready(function () {
             "tempo": tempo,
             "duration": duration
         }
-
-        request('POST', 'http://localhost:1338/generate_song', { json: paramsObj }).done((res) => {
+        console.log(api_url);
+        request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {
             console.log('success');
             let respObj = JSON.parse(res.getBody());
 
