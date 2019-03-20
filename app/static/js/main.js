@@ -49,9 +49,36 @@ $(document).ready(function () {
             "duration": duration
         }
 
-        request('POST', 'http://3.16.26.98:1337/echo', { json: paramsObj }).done((res) => {
+        request('POST', 'http://localhost:1338/generate_song', { json: paramsObj }).done((res) => {
             console.log('success');
-            console.log(res.getBody());
+            let respObj = JSON.parse(res.getBody());
+
+            let historyObj = `
+                <li class="history-entry">
+                    <div>
+                        ${respObj.song_name}
+                        <a href="${respObj.location}" class="download-song"
+                           download="">
+                            <i class="fa fa-download"></i>
+                        </a>
+                        <span class="song-ts">
+                            Generated on
+                            ${moment(respObj.timestamp).format('MMMM Do YYYY, [at] h:mm a')}
+                        </span>
+                        
+                    </div>
+                    <div>
+                        <audio controls>
+                            <source src="${respObj.location}" type="audio/mpeg">
+                            Could not find Audio Resource.
+                        </audio>
+                    </div>
+                </li>`;
+
+            $('#empty-history').hide();
+            $('.history-contents').prepend(historyObj);
+
+
         });
 
         event.preventDefault();

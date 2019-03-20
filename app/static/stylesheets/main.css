@@ -65,7 +65,8 @@ body {
 }
 
 .multi-choice-cycle h4 {
-    text-decoration: underline;
+    font-weight: bold;
+    font-size: 20pt;
 }
 
 .cycle-up:hover,
@@ -141,4 +142,33 @@ body {
 .history-wrapper li:not(:last-child) {
     border-bottom: 1px solid lightgrey;
     list-style: none;
+}
+
+.download-song{
+    float: right;
+    vertical-align: top;
+}
+
+.history-entry{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#empty-history{
+    font-style: italic;
+    color: grey;
+    margin: 0 auto;
+}
+
+audio{
+    width: 100%;
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+.song-ts{
+    color: grey !important;
+    font-style: italic;
+    display: block;
+    font-size: .9em;
 }
