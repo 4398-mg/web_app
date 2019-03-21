@@ -13,4 +13,4 @@ with open(expanduser('~')+'/web_app/git_log.txt','r') as f:
     if('behind' in contents):
         Popen('pkill -f gunicorn', stdout=PIPE, stderr=PIPE, shell=True).wait()
         Popen('git -C /home/ubuntu/web_app/ pull origin master', stdout=PIPE, stderr=PIPE, shell=True).wait()
-        Popen('python3 /home/ubuntu/web_app/manage.py gunicorn', stdout=PIPE, stderr=PIPE, shell=True)
+        Popen('sudo python3 /home/ubuntu/web_app/manage.py gunicorn -p 80', stdout=PIPE, stderr=PIPE, shell=True)
