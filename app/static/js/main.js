@@ -39,6 +39,8 @@ $(document).ready(function () {
 
     $('#gen').on('submit', function (event) {
 
+        $('#loading-div').show();
+
         let genre = this.children[0].children[2].innerText;
         let tempo = this.children[1].children[2].innerText;
         let duration = this.children[2].children[2].innerText;
@@ -50,7 +52,8 @@ $(document).ready(function () {
         }
         console.log(api_url);
         request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {
-            console.log('success');
+            $('#loading-div').hide();
+
             let respObj = JSON.parse(res.getBody());
 
             let historyObj = `
@@ -80,6 +83,7 @@ $(document).ready(function () {
 
 
         });
+
 
         event.preventDefault();
 
