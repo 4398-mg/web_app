@@ -13,6 +13,7 @@
   <meta name="google-signin-client_id" content="646770193787-o5ci1obqen2ho9s1eclcj24sovtgpfik.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-site-verification" content="iBIvT_kxRR2VM0Ev0FggX6zbaIyHThAYGnXrNj-szNw" />
+
 </head>
 
 <div id="particles-js"></div>
@@ -22,7 +23,7 @@
   
   <div class="navb">
     <h2 class="center-block">
-      MusicGen
+      Wimbo
       <i class="fa fa-music"></i>
     </h2>
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
@@ -83,42 +84,37 @@
       </div>
       <div class="button-wrapper">
         <h4>.</h4>
-        <i class="cycle-up fa fa-chevron-up"></i>
         <button class="btn btn-primary">
           Generate
         </button>
-        <i class="cycle-up fa fa-chevron-up"></i>
       </div>
     </form>
+    <div class="loading" id="loading-div">
 
-    <span id="media-viewer">
-      <audio controls>
-        <source src="{{ url_for('static', filename='SampleAudio_0.4mb.mp3') }}" type="audio/mpeg">
-        Could not find Audio Resource.
-      </audio>
-      <a href="{{ url_for('static', filename='SampleAudio_0.4mb.mp3') }}">
-        <button id="download-button" class="btn btn-info">
-          <i class="fa fa-download"></i>
-        </button>
-      </a>
-    </span>
-
+      <span>
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+        Generating Music
+      </span>
+    </div>
     <div class="history-wrapper center-block list-group" id="song-history-list">
       <h2 id="history-heading">Your Generation History</h2>
-      <!--
-      <li><a href="#">Song 1 - February 1st, 2019 at 5:54pm</a></li>
-      <li><a href="#">Song 2 - February 2nd, 2019 at 6:21pm</a></li>
-      <li><a href="#">Song 3 - February 4th, 2019 at 2:12pm</a></li>
-      <li><a href="#">Song 4 - February 5th, 2019 at 9:44am</a></li>
-      <li><a href="#">Song 5 - February 6th, 2019 at 9:32pm</a></li>
-    -->
+      <div class="history-contents">
 
+      </div>
+      <span id="empty-history">No songs generated</span>
     </div>
   </div>
 </body>
 <footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/then-request/2.2.0/request.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
   <script>
-    var api_url = "{{ app.config['API_URL'] }}";
+    var api_url = "http://{{ app.config['API_URL'] }}";
+    console.log(api_url)
   </script>
   <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
   <script>

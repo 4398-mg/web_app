@@ -39,6 +39,8 @@ $(document).ready(function () {
 
     $('#gen').on('submit', function (event) {
 
+        $('#loading-div').show();
+
         let genre = this.children[0].children[2].innerText;
         let tempo = this.children[1].children[2].innerText;
         let duration = this.children[2].children[2].innerText;
@@ -48,11 +50,40 @@ $(document).ready(function () {
             "tempo": tempo,
             "duration": duration
         }
+        console.log(api_url);
+        request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {
+            $('#loading-div').hide();
 
-        request('POST', 'http://3.16.26.98:1337/echo', { json: paramsObj }).done((res) => {
-            console.log('success');
-            console.log(res.getBody());
+            let respObj = JSON.parse(res.getBody());
+
+            let historyObj = `
+                <li class="history-entry">
+                    <div>
+                        ${respObj.song_name}
+                        <a href="${respObj.location}" class="download-song"
+                           download="">
+                            <i class="fa fa-download"></i>
+                        </a>
+                        <span class="song-ts">
+                            Generated on
+                            ${moment(respObj.timestamp).format('MMMM Do YYYY, [at] h:mm a')}
+                        </span>
+                        
+                    </div>
+                    <div>
+                        <audio controls>
+                            <source src="${respObj.location}" type="audio/mpeg">
+                            Could not find Audio Resource.
+                        </audio>
+                    </div>
+                </li>`;
+
+            $('#empty-history').hide();
+            $('.history-contents').prepend(historyObj);
+
+
         });
+
 
         event.preventDefault();
 
