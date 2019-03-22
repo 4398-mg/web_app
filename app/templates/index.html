@@ -40,6 +40,8 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
+
+        $("#history-heading").replaceWith('<h2 id="history-heading">' + profile.getGivenName() + '\'s Song History</h2>');
       }
     </script>
   </div>
@@ -102,7 +104,7 @@
     </span>
 
     <div class="history-wrapper center-block list-group" id="song-history-list">
-      <h2>Your Generation History</h2>
+      <h2 id="history-heading">Your Generation History</h2>
       <!--
       <li><a href="#">Song 1 - February 1st, 2019 at 5:54pm</a></li>
       <li><a href="#">Song 2 - February 2nd, 2019 at 6:21pm</a></li>
