@@ -7,9 +7,11 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/font-awesome.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}">
-  <meta name="google-site-verification" content="iBIvT_kxRR2VM0Ev0FggX6zbaIyHThAYGnXrNj-szNw" />
-
+ <meta name="google-site-verification" content="iBIvT_kxRR2VM0Ev0FggX6zbaIyHThAYGnXrNj-szNw" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="847545686473-mvjhn9onpmvb6oih33lm81f6opcdo1g0.apps.googleusercontent.com">
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}">
+  
 </head>
 
 <div id="particles-js"></div>
@@ -21,9 +23,28 @@
       Wimbo
       <i class="fa fa-music"></i>
     </h2>
-    <a href="/sign_in">
+    <!--<a href="/sign_in">
       Sign In with Google <i class="fa fa-sign-in" aria-hidden="true"></i>
-    </a>
+    </a>-->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="signout">
+      <span id="greeting"></span>
+      <a onclick="signOut();">
+        Sign out <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </a>
+    </div>
+    <script>
+      function signOut() {
+	profileID = null;
+	profileEmail = null;
+	$('.g-signin2').show();
+        $('.signout').hide();
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
+    </script>
   </div>
   <div class="container">
     <form class="center-block" id="gen">

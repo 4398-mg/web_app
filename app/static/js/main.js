@@ -1,4 +1,22 @@
+var profileID = null;
+var profileEmail = null;
+
+function onSignIn(googleUser) {
+  $('.g-signin2').hide();
+  $('.signout').show();
+ 
+  var profile = googleUser.getBasicProfile();
+  profileID = googleUser.getAuthResponse().id_token;;
+  profileEmail  = profile.getEmail();
+  console.log('ID: ' + profileID); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  $('#greeting')[0].innerText = 'Hey there, ' + profile.getName().split(' ')[0] + '!';
+}
+
 $(document).ready(function () {
+	
     $('.cycle-up').on('click', function (event) {
 
         var current = null;
@@ -48,7 +66,9 @@ $(document).ready(function () {
         let paramsObj = {
             "genre": genre,
             "tempo": tempo,
-            "duration": duration
+            "duration": duration,
+	    "profileID": profileID,
+	    "profileEmail": profileEmail
         }
         console.log(api_url);
         request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {

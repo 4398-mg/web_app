@@ -27,7 +27,7 @@ body {
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.navb * {
+.navb h2 {
     color: white;
 }
 
@@ -47,6 +47,29 @@ body {
 
 .navb h1 {
     margin: 0 auto;
+}
+
+.g-signin2{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.signout{
+    display: none;
+    color: white;
+    width: 400px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.signout a:hover{
+    cursor: pointer;
 }
 
 .container {
