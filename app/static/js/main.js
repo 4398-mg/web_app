@@ -20,7 +20,7 @@ $(document).ready(function () {
     // Hide indicator that scripts aren't loading
     $( "#js-off-warning").hide();
     // Hide warning that cookies aren't enabled
-    if(trySetCookie()) {
+    if(navigator.cookiesEnabled) {
         $("#cookies-off-warning").hide();
     }
 	
