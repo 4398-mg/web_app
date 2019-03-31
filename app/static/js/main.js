@@ -2,28 +2,38 @@ var profileID = null;
 var profileEmail = null;
 
 function onSignIn(googleUser) {
-  $('.g-signin2').hide();
-  $('.signout').show();
- 
-  var profile = googleUser.getBasicProfile();
-  profileID = googleUser.getAuthResponse().id_token;;
-  profileEmail  = profile.getEmail();
-  console.log('ID: ' + profileID); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  $('#greeting')[0].innerText = 'Hey there, ' + profile.getName().split(' ')[0] + '!';
+    $('.g-signin2').hide();
+    $('.signout').show();
+
+    var profile = googleUser.getBasicProfile();
+    profileID = googleUser.getAuthResponse().id_token;;
+    profileEmail = profile.getEmail();
+    console.log('ID: ' + profileID); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    $('#greeting')[0].innerText = 'Hey there, ' + profile.getName().split(' ')[0] + '!';
+
+    let paramsObj = {
+        "profileID": profileID,
+        "profileEmail": profileEmail
+    };
+
+    request('POST', api_url + '/history', { json: paramsObj }).done((res) => {
+        console.log('Get History:');
+        console.log(res);
+    });
 }
 
 $(document).ready(function () {
 
     // Hide indicator that scripts aren't loading
-    $( "#js-off-warning").hide();
+    $("#js-off-warning").hide();
     // Hide warning that cookies aren't enabled
-    if(navigator.cookiesEnabled) {
+    if (navigator.cookiesEnabled) {
         $("#cookies-off-warning").hide();
     }
-	
+
     $('.cycle-up').on('click', function (event) {
 
         var current = null;
@@ -74,8 +84,8 @@ $(document).ready(function () {
             "genre": genre,
             "tempo": tempo,
             "duration": duration,
-	    "profileID": profileID,
-	    "profileEmail": profileEmail
+            "profileID": profileID,
+            "profileEmail": profileEmail
         }
         console.log(api_url);
         request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {
@@ -123,11 +133,11 @@ $(document).ready(function () {
 
     // https://stackoverflow.com/questions/37824377/detect-if-cookies-are-enabled-in-the-browser
     function trySetCookie() {
-         setCookie("testCookie", "testValue", 1);
-         var cookieValue = getCookie("testCookie");
-         if (cookieValue == "" || cookieValue == null)
+        setCookie("testCookie", "testValue", 1);
+        var cookieValue = getCookie("testCookie");
+        if (cookieValue == "" || cookieValue == null)
             return false;
-         return true;
-     }
+        return true;
+    }
 
 });
