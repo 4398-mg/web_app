@@ -123,7 +123,7 @@ $(document).ready(function () {
 
     // https://stackoverflow.com/questions/37824377/detect-if-cookies-are-enabled-in-the-browser
     function trySetCookie() {
-         browser.cookies.set("testCookie", "testValue", 1);
+         setCookie("testCookie", "testValue", 1);
          var cookieValue = getCookie("testCookie");
          if (cookieValue == "" || cookieValue == null)
             return false;
