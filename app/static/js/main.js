@@ -24,7 +24,35 @@ function onSignIn(googleUser) {
         if (res.statusCode != 200) {
             return;
         }
-        let historyObj = JSON.parse(res.getBody());
+        let historyObj = JSON.parse(res.getBody()).history;
+
+        for (var i = 0; i < historyObj.length; i++) {
+            let respObj = historyObj[i];
+            let htmlHistoryObj = `
+                <li class="history-entry">
+                    <div>
+                        ${respObj.song_name}
+                        <a href="${respObj.location}" class="download-song"
+                           download="">
+                            <i class="fa fa-download"></i>
+                        </a>
+                        <span class="song-ts">
+                            Generated on
+                            ${moment(respObj.timestamp).format('MMMM Do YYYY, [at] h:mm a')}
+                        </span>
+                        
+                    </div>
+                    <div>
+                        <audio controls>
+                            <source src="${respObj.location}" type="audio/mpeg">
+                            Could not find Audio Resource.
+                        </audio>
+                    </div>
+                </li>`;
+
+            $('#empty-history').hide();
+            $('.history-contents').prepend(historyObj);
+        }
 
         console.log(historyObj);
     });
