@@ -51,7 +51,7 @@ function onSignIn(googleUser) {
                 </li>`;
 
             $('#empty-history').hide();
-            $('.history-contents').prepend(historyObj);
+            $('.history-contents').prepend(htmlHistoryObj);
         }
 
         console.log(historyObj);
