@@ -21,7 +21,12 @@ function onSignIn(googleUser) {
 
     request('POST', api_url + '/history', { json: paramsObj }).done((res) => {
         console.log('Get History:');
-        console.log(res);
+        if (res.statusCode != 200) {
+            return;
+        }
+        let historyObj = JSON.parse(res.getBody());
+
+        console.log(historyObj);
     });
 }
 
