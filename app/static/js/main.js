@@ -122,29 +122,30 @@ $(document).ready(function () {
             console.log('updated!')
             event.preventDefault();
         });
+    });
 
-        $('#gen').on('submit', function (event) {
+    $('#gen').on('submit', function (event) {
 
-            $('#loading-div').show();
+        $('#loading-div').show();
 
-            let genre = this.children[0].children[2].innerText;
-            let tempo = this.children[1].children[2].innerText;
-            let duration = this.children[2].children[2].innerText;
+        let genre = this.children[0].children[2].innerText;
+        let tempo = this.children[1].children[2].innerText;
+        let duration = this.children[2].children[2].innerText;
 
-            let paramsObj = {
-                "genre": genre,
-                "tempo": tempo,
-                "duration": duration,
-                "profileID": profileID,
-                "profileEmail": profileEmail
-            }
-            console.log(api_url);
-            request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {
-                $('#loading-div').hide();
+        let paramsObj = {
+            "genre": genre,
+            "tempo": tempo,
+            "duration": duration,
+            "profileID": profileID,
+            "profileEmail": profileEmail
+        }
+        console.log(api_url);
+        request('POST', api_url + '/generate_song', { json: paramsObj }).done((res) => {
+            $('#loading-div').hide();
 
-                let respObj = JSON.parse(res.getBody());
-                if (!(loggedIn)) {
-                    let historyObj = `
+            let respObj = JSON.parse(res.getBody());
+            if (!(loggedIn)) {
+                let historyObj = `
                 <li class="history-entry">
                     <div>
                         ${respObj.song_name}
@@ -165,8 +166,8 @@ $(document).ready(function () {
                         </audio>
                     </div>
                 </li>`;
-                } else {
-                    let historyObj = `
+            } else {
+                let historyObj = `
                 <li class="history-entry">
                     <div>
                         ${respObj.song_name}
@@ -190,32 +191,32 @@ $(document).ready(function () {
                         </audio>
                     </div>
                 </li>`;
-                }
+            }
 
 
-                $('#empty-history').hide();
-                $('.history-contents').prepend(historyObj);
+            $('#empty-history').hide();
+            $('.history-contents').prepend(historyObj);
 
-
-            });
-
-
-            event.preventDefault();
 
         });
 
-        function report_response(argument) {
-            console.log("finished")
-            console.log(argument);
-        }
 
-        // https://stackoverflow.com/questions/37824377/detect-if-cookies-are-enabled-in-the-browser
-        function trySetCookie() {
-            setCookie("testCookie", "testValue", 1);
-            var cookieValue = getCookie("testCookie");
-            if (cookieValue == "" || cookieValue == null)
-                return false;
-            return true;
-        }
+        event.preventDefault();
 
     });
+
+    function report_response(argument) {
+        console.log("finished")
+        console.log(argument);
+    }
+
+    // https://stackoverflow.com/questions/37824377/detect-if-cookies-are-enabled-in-the-browser
+    function trySetCookie() {
+        setCookie("testCookie", "testValue", 1);
+        var cookieValue = getCookie("testCookie");
+        if (cookieValue == "" || cookieValue == null)
+            return false;
+        return true;
+    }
+
+});
