@@ -42,6 +42,9 @@ function onSignIn(googleUser) {
                         <a href="#" class="delete-song" id="${respObj.song_id}">
                             <i class="fa fa-trash"></i>
                         </a>
+                        <a href="#" class="edit-song" id="${respObj.song_id}">
+                            <i class="fa fa-pencil"></i>
+                        </a>
                         <span class="song-ts">
                             Generated on
                             ${moment(respObj.timestamp).format('MMMM Do YYYY, [at] h:mm a')}
@@ -127,6 +130,37 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
+    $(document.body).on('click', '.edit-song', function (event) {
+        console.log("delete this song");
+        console.dir(this);
+
+        let songID = this.id;
+
+        var newName = prompt("Please enter the new name of the song");
+
+        if (newName === null || newName === '') {
+            return;
+        }
+
+        let paramsObj = {
+            'songID': songID,
+            'profileID': profileID,
+            'profileEmail': profileEmail,
+            'newName': newName
+        }
+
+        console.log(paramsObj);
+
+
+        // request('POST', api_url + '/remove_song', { json: paramsObj }).done((res) => {
+        //     console.log('updated!')
+        // });
+
+        // $(`#${songID}-entry`).remove();
+
+        event.preventDefault();
+    });
+
     $('#gen').on('submit', function (event) {
 
         $('#loading-div').show();
@@ -181,6 +215,9 @@ $(document).ready(function () {
                         </a>
                         <a href="#" class="delete-song" id="${respObj.song_id}">
                             <i class="fa fa-trash"></i>
+                        </a>
+                        <a href="#" class="edit-song" id="${respObj.song_id}">
+                            <i class="fa fa-pencil"></i>
                         </a>
                         <span class="song-ts">
                             Generated on
