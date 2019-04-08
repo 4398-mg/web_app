@@ -7,11 +7,12 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/font-awesome.min.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" />
- <meta name="google-site-verification" content="iBIvT_kxRR2VM0Ev0FggX6zbaIyHThAYGnXrNj-szNw" />
+  <meta name="google-site-verification" content="iBIvT_kxRR2VM0Ev0FggX6zbaIyHThAYGnXrNj-szNw" />
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="847545686473-mvjhn9onpmvb6oih33lm81f6opcdo1g0.apps.googleusercontent.com">
- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}">
-  
+  <meta name="google-signin-client_id"
+    content="847545686473-mvjhn9onpmvb6oih33lm81f6opcdo1g0.apps.googleusercontent.com">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/main.css') }}">
+
 </head>
 
 <div id="particles-js"></div>
@@ -35,9 +36,9 @@
     </div>
     <script>
       function signOut() {
-	profileID = null;
-	profileEmail = null;
-	$('.g-signin2').show();
+        profileID = null;
+        profileEmail = null;
+        $('.g-signin2').show();
         $('.signout').hide();
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
@@ -51,20 +52,19 @@
     Some scripts failed. Is your browser blocking scripts?
   </span>
   <span class="browser-warnings" id="cookies-off-warning">
-    Your browser is restricting use of cookies. This may prevent logging in. Try to turn off privacy mode and enable cookies.
+    Your browser is restricting use of cookies. This may prevent logging in. Try to turn off privacy mode and enable
+    cookies.
   </span>
-  
+
   <div class="container">
     <form class="center-block" id="gen">
       <div class="multi-choice-cycle">
         <h4>Genre</h4>
         <i class="cycle-up fa fa-chevron-up"></i>
         <div class="mc-value">
-          <span>Jazz</span>
-          <span class="hide-value">Rock</span>
-          <span class="hide-value">Pop</span>
+          <span>Folk</span>
           <span class="hide-value">Classical</span>
-          <span class="hide-value">Hip Hop</span>
+          <span class="hide-value">Game</span>
         </div>
         <i class="cycle-down fa fa-chevron-down"></i>
       </div>
