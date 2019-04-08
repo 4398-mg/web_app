@@ -40,7 +40,7 @@ function onSignIn(googleUser) {
                            download="">
                             <i class="fa fa-download"></i>
                         </a>
-                        <a href="#" class="delete-song" value="${respObj.song_id}">
+                        <a href="#" class="delete-song" id="${respObj.song_id}">
                             <i class="fa fa-trash"></i>
                         </a>
                         <span class="song-ts">
@@ -164,7 +164,7 @@ $(document).ready(function () {
                            download="">
                             <i class="fa fa-download"></i>
                         </a>
-                        <a href="#" class="delete-song" value="${respObj.song_id}">
+                        <a href="#" class="delete-song" id="${respObj.song_id}">
                             <i class="fa fa-trash"></i>
                         </a>
                         <span class="song-ts">
