@@ -156,9 +156,10 @@ $(document).ready(function () {
 
         request('POST', api_url + '/edit_song', { json: paramsObj }).done((res) => {
             console.log('updated!')
+            location.reload();
         });
 
-        location.reload();
+
 
         event.preventDefault();
     });
