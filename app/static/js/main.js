@@ -147,8 +147,9 @@ $(document).ready(function () {
             $('#loading-div').hide();
 
             let respObj = JSON.parse(res.getBody());
+            let historyObj;
             if (!(loggedIn)) {
-                let historyObj = `
+                historyObj = `
                 <li class="history-entry">
                     <div>
                         ${respObj.song_name}
@@ -170,7 +171,7 @@ $(document).ready(function () {
                     </div>
                 </li>`;
             } else {
-                let historyObj = `
+                historyObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
                         ${respObj.song_name}
