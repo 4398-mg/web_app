@@ -120,8 +120,11 @@ $(document).ready(function () {
 
         request('POST', api_url + '/remove_song', { json: paramsObj }).done((res) => {
             console.log('updated!')
-            event.preventDefault();
         });
+
+        $(this).remove();
+
+        event.preventDefault();
     });
 
     $('#gen').on('submit', function (event) {
