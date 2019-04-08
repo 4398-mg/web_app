@@ -108,7 +108,7 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    $('.delete-song').on('click', function (event) {
+    $(document.body).on('click', '.delete-song', function (event) {
         console.log("delete this song");
 
         event.preventDefault();
