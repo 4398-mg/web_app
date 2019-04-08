@@ -158,7 +158,7 @@ $(document).ready(function () {
             console.log('updated!')
         });
 
-        $(`#${songID}-name`).innerText = newName;
+        location.reload();
 
         event.preventDefault();
     });
