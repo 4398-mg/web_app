@@ -34,7 +34,9 @@ function onSignIn(googleUser) {
             let htmlHistoryObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
-                        ${respObj.song_name}
+                        <span id="${respObj.song_id}-name">
+                            ${respObj.song_name}
+                        </span>
                         <a href="${respObj.location}" class="download-song"
                            download="">
                             <i class="fa fa-download"></i>
@@ -131,7 +133,7 @@ $(document).ready(function () {
     });
 
     $(document.body).on('click', '.edit-song', function (event) {
-        console.log("delete this song");
+        console.log("edit this song");
         console.dir(this);
 
         let songID = this.id;
@@ -152,11 +154,11 @@ $(document).ready(function () {
         console.log(paramsObj);
 
 
-        // request('POST', api_url + '/remove_song', { json: paramsObj }).done((res) => {
-        //     console.log('updated!')
-        // });
+        request('POST', api_url + '/edit_song', { json: paramsObj }).done((res) => {
+            console.log('updated!')
+        });
 
-        // $(`#${songID}-entry`).remove();
+        $(`#${songID}-name`).innerText = newName;
 
         event.preventDefault();
     });
@@ -208,7 +210,9 @@ $(document).ready(function () {
                 historyObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
-                        ${respObj.song_name}
+                        <span id="${respObj.song_id}-name">
+                            ${respObj.song_name}
+                        </span>
                         <a href="${respObj.location}" class="download-song"
                            download="">
                             <i class="fa fa-download"></i>
