@@ -36,6 +36,10 @@ function onSignIn(googleUser) {
                            download="">
                             <i class="fa fa-download"></i>
                         </a>
+                        <a href="#" class="delete-song"
+                           download="">
+                            <i class="fa fa-trash"></i>
+                        </a>
                         <span class="song-ts">
                             Generated on
                             ${moment(respObj.timestamp).format('MMMM Do YYYY, [at] h:mm a')}
@@ -102,6 +106,12 @@ $(document).ready(function () {
                 break;
             }
         }
+        event.preventDefault();
+    });
+
+    $('.delete-song').on('click', function (event) {
+        console.log("delete this song");
+
         event.preventDefault();
     });
 

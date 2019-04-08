@@ -168,6 +168,10 @@ body {
 }
 
 .download-song{
+    vertical-align: top;
+}
+
+.delete-song{
     float: right;
     vertical-align: top;
 }
