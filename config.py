@@ -26,7 +26,7 @@ class DevelopmentConfig(Config):
     LOGLEVEL = DEBUG
     DB_USER = os.getenv('DB_USER')
     DB_PASS = os.getenv('DB_PASS')
-    API_URL = '3.16.26.98'
+    API_URL = '18.191.144.92'
 
 
 class ProductionConfig(Config):
@@ -34,7 +34,7 @@ class ProductionConfig(Config):
     LOGLEVEL = ''
     DB_USER = os.getenv('DB_USER')
     DB_PASS = os.getenv('DB_PASS')
-    API_URL = '3.16.26.98'
+    API_URL = '18.191.144.92'
 
 
 config = {
