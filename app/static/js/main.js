@@ -32,7 +32,7 @@ function onSignIn(googleUser) {
         for (var i = 0; i < historyObj.length; i++) {
             let respObj = historyObj[i];
             let htmlHistoryObj = `
-                <li class="history-entry">
+                <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
                         ${respObj.song_name}
                         <a href="${respObj.location}" class="download-song"
@@ -122,7 +122,7 @@ $(document).ready(function () {
             console.log('updated!')
         });
 
-        $(this).remove();
+        $(`#${songID}-entry`).remove();
 
         event.preventDefault();
     });
@@ -171,7 +171,7 @@ $(document).ready(function () {
                 </li>`;
             } else {
                 let historyObj = `
-                <li class="history-entry">
+                <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
                         ${respObj.song_name}
                         <a href="${respObj.location}" class="download-song"
