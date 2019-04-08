@@ -36,8 +36,7 @@ function onSignIn(googleUser) {
                            download="">
                             <i class="fa fa-download"></i>
                         </a>
-                        <a href="#" class="delete-song"
-                           download="">
+                        <a href="#" class="delete-song">
                             <i class="fa fa-trash"></i>
                         </a>
                         <span class="song-ts">
