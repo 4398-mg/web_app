@@ -59,6 +59,10 @@ function onSignIn(googleUser) {
                             Could not find Audio Resource.
                         </audio>
                     </div>
+                    <a href="#" class="gen-music" id="gen-${respObj.song_id}">
+                        <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+                        Generate Sheet Music
+                    </a>
                 </li>`;
 
             $('#empty-history').hide();
@@ -236,6 +240,10 @@ $(document).ready(function () {
                             Could not find Audio Resource.
                         </audio>
                     </div>
+                    <a href="#" class="gen-music" id="gen-${respObj.song_id}">
+                        <i class="fa fa-file-archive-o" aria-hidden="true"></i>
+                        Generate Sheet Music
+                    </a>
                 </li>`;
             }
 
