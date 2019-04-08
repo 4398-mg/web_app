@@ -1,5 +1,6 @@
 var profileID = null;
 var profileEmail = null;
+var loggedIn = false;
 
 function onSignIn(googleUser) {
     $('.g-signin2').hide();
@@ -19,6 +20,8 @@ function onSignIn(googleUser) {
         "profileEmail": profileEmail
     };
 
+    loggedIn = true;
+
     request('POST', api_url + '/history', { json: paramsObj }).done((res) => {
         console.log('Get History:');
         if (res.statusCode != 200) {
@@ -28,6 +31,7 @@ function onSignIn(googleUser) {
 
         for (var i = 0; i < historyObj.length; i++) {
             let respObj = historyObj[i];
+            console.log(respObj);
             let htmlHistoryObj = `
                 <li class="history-entry">
                     <div>
@@ -36,7 +40,7 @@ function onSignIn(googleUser) {
                            download="">
                             <i class="fa fa-download"></i>
                         </a>
-                        <a href="#" class="delete-song">
+                        <a href="#" class="delete-song" value="${respObj.song_id}">
                             <i class="fa fa-trash"></i>
                         </a>
                         <span class="song-ts">
@@ -110,6 +114,7 @@ $(document).ready(function () {
 
     $(document.body).on('click', '.delete-song', function (event) {
         console.log("delete this song");
+        console.dir(this);
 
         event.preventDefault();
     });
@@ -134,8 +139,8 @@ $(document).ready(function () {
             $('#loading-div').hide();
 
             let respObj = JSON.parse(res.getBody());
-
-            let historyObj = `
+            if (!(loggedIn)) {
+                let historyObj = `
                 <li class="history-entry">
                     <div>
                         ${respObj.song_name}
@@ -156,6 +161,33 @@ $(document).ready(function () {
                         </audio>
                     </div>
                 </li>`;
+            } else {
+                let historyObj = `
+                <li class="history-entry">
+                    <div>
+                        ${respObj.song_name}
+                        <a href="${respObj.location}" class="download-song"
+                           download="">
+                            <i class="fa fa-download"></i>
+                        </a>
+                        <a href="#" class="delete-song" value="${respObj.song_id}">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        <span class="song-ts">
+                            Generated on
+                            ${moment(respObj.timestamp).format('MMMM Do YYYY, [at] h:mm a')}
+                        </span>
+                        
+                    </div>
+                    <div>
+                        <audio controls>
+                            <source src="${respObj.location}" type="audio/mpeg">
+                            Could not find Audio Resource.
+                        </audio>
+                    </div>
+                </li>`;
+            }
+
 
             $('#empty-history').hide();
             $('.history-contents').prepend(historyObj);
