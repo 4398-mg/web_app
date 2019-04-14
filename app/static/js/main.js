@@ -139,7 +139,7 @@ $(document).ready(function () {
             console.log('sheet music generated!')
             genSuccess = true;
             genLink = res.body.sheet_location;
-
+            console.log(genLink);
             downloadURI(genLink, songID);
             $(this.nextElementSibling).hide();
         });
