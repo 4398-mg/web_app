@@ -266,3 +266,8 @@ audio{
   .fa-spin{
       display: none;
   }
+
+  .nav-logo{
+      height: 50px;
+      width: auto;
+  }
