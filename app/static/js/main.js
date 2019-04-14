@@ -115,6 +115,9 @@ $(document).ready(function () {
     });
 
     $(document.body).on('click', '.gen-music', function (event) {
+        console.dir(this);
+
+        let songID = this.id;
         let paramsObj = {
             'songID': songID
         }
