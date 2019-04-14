@@ -117,7 +117,7 @@ $(document).ready(function () {
     $(document.body).on('click', '.gen-music', function (event) {
         console.dir(this);
 
-        let songID = this.id;
+        let songID = this.id.split('gen-')[1];
         let paramsObj = {
             'songID': songID
         }
