@@ -137,10 +137,11 @@ $(document).ready(function () {
         let genLink = null;
         request('POST', api_url + '/sheet_music', { json: paramsObj }).done((res) => {
             console.log('sheet music generated!')
+            console.log(res.body);
             genSuccess = true;
-            genLink = res.body.sheet_location;
-            console.log(genLink);
-            downloadURI(genLink, songID);
+            // genLink = res.body.sheet_location;
+            // console.log(genLink);
+            // downloadURI(genLink, songID);
             $(this.nextElementSibling).hide();
         });
 
