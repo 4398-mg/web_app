@@ -63,6 +63,7 @@ function onSignIn(googleUser) {
                         <i class="fa fa-file-archive-o" aria-hidden="true"></i>
                         Generate Sheet Music
                     </a>
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                 </li>`;
 
             $('#empty-history').hide();
