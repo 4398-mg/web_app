@@ -114,6 +114,17 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
+    $(document.body).on('click', '.gen-music', function (event) {
+        let paramsObj = {
+            'songID': songID
+        }
+
+        request('POST', api_url + '/sheet_music', { json: paramsObj }).done((res) => {
+            console.log('sheet music generated!')
+            console.log(res.body)
+        });
+    });
+
     $(document.body).on('click', '.delete-song', function (event) {
         console.log("delete this song");
         console.dir(this);
