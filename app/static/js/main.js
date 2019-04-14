@@ -139,9 +139,9 @@ $(document).ready(function () {
             console.log('sheet music generated!')
             console.log(res.body);
             genSuccess = true;
-            // genLink = res.body.sheet_location;
-            // console.log(genLink);
-            // downloadURI(genLink, songID);
+            genLink = JSON.parse(res.body).sheet_location;
+            console.log(genLink);
+            downloadURI(genLink, songID);
             $(this.nextElementSibling).hide();
         });
 
