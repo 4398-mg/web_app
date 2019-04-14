@@ -123,16 +123,6 @@ $(document).ready(function () {
             'songID': songID
         }
 
-        let genSuccess = false;
-        let genLink = null;
-        request('POST', api_url + '/sheet_music', { json: paramsObj }).done((res) => {
-            console.log('sheet music generated!')
-            genSuccess = true;
-            genLink = res.body.sheet_location;
-        });
-
-        $(this.nextElementSibling).hide();
-
         function downloadURI(uri, name) {
             var link = document.createElement("a");
             link.download = name;
@@ -143,11 +133,20 @@ $(document).ready(function () {
             delete link;
         }
 
-        if (genSuccess) {
+        let genSuccess = false;
+        let genLink = null;
+        request('POST', api_url + '/sheet_music', { json: paramsObj }).done((res) => {
+            console.log('sheet music generated!')
+            genSuccess = true;
+            genLink = res.body.sheet_location;
+
             downloadURI(genLink, songID);
-        } else {
-            alert("Unable to generate music!");
-        }
+            $(this.nextElementSibling).hide();
+        });
+
+
+
+
     });
 
     $(document.body).on('click', '.delete-song', function (event) {
