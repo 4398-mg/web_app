@@ -116,17 +116,38 @@ $(document).ready(function () {
     });
 
     $(document.body).on('click', '.gen-music', function (event) {
-        console.dir(this);
+        $(this.nextElementSibling).show();
 
         let songID = this.id.split('gen-')[1];
         let paramsObj = {
             'songID': songID
         }
 
+        let genSuccess = false;
+        let genLink = null;
         request('POST', api_url + '/sheet_music', { json: paramsObj }).done((res) => {
             console.log('sheet music generated!')
-            console.log(res.body)
+            genSuccess = true;
+            genLink = res.body.sheet_location;
         });
+
+        $(this.nextElementSibling).hide();
+
+        function downloadURI(uri, name) {
+            var link = document.createElement("a");
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            delete link;
+        }
+
+        if (genSuccess) {
+            downloadURI(genLink, songID);
+        } else {
+            alert("Unable to generate music!");
+        }
     });
 
     $(document.body).on('click', '.delete-song', function (event) {
