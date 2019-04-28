@@ -33,16 +33,17 @@ function onSignIn(googleUser) {
             let respObj = historyObj[i];
             let htmlHistoryObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
+                    
                     <div>
-                        <span class="genre-label ${respObj.genre.toLowerCase()}">
-                            ${respObj.genre.toUpperCase()}
-                        </span>
-                        <span class="tempo-label ${respObj.tempo.toLowerCase()}>
-                            ${respObj.tempo.toUpperCase()}
-                        </span>
-                    </div>
-                    <br />
-                    <div>
+                        <div>
+                            <span class="genre-label ${respObj.genre.toLowerCase()}">
+                                ${respObj.genre.toUpperCase()}
+                            </span>
+                            <span class="tempo-label ${respObj.tempo.toLowerCase()}>
+                                ${respObj.tempo.toUpperCase()}
+                            </span>
+                        </div>
+                        <br />
                         <span id="${respObj.song_id}-name">
                             ${respObj.song_name}
                         </span>
@@ -259,16 +260,17 @@ $(document).ready(function () {
             } else {
                 historyObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
+                    
                     <div>
-                        <span class="genre-label ${respObj.genre.toLowerCase()}">
-                            ${respObj.genre.toUpperCase()}
-                        </span>
-                        <span class="tempo-label ${respObj.tempo.toLowerCase()}>
-                            ${respObj.tempo.toUpperCase()}
-                        </span>
-                    </div>
-                    <br />
-                    <div>
+                        <div>
+                            <span class="genre-label ${respObj.genre.toLowerCase()}">
+                                ${respObj.genre.toUpperCase()}
+                            </span>
+                            <span class="tempo-label ${respObj.tempo.toLowerCase()}>
+                                ${respObj.tempo.toUpperCase()}
+                            </span>
+                        </div>
+                        <br />
                         <span id="${respObj.song_id}-name">
                             ${respObj.song_name}
                         </span>
