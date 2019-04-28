@@ -278,11 +278,13 @@ audio{
   }
 
 
-  .genre-label{
+  .genre-label, .tempo-label{
       color: white;
       font-size: .8em;
-      font-weight: bold;
+      font-weight: bolder;
       margin-right: 5px;
+      padding: 2px;
+      text-align: center;
   }
 
   .genre-label.folk{
@@ -301,7 +303,14 @@ audio{
     background-color: #9b59b6;
   }
 
-  .tempo-label{
-      color: white;
-      background-color: blue;
+  .tempo-label.fast{
+    background-color: #e74c3c;
+  } 
+
+  .tempo-label.normal{
+    background-color: #e67e22;
+  }
+  
+  .tempo-label.slow{
+    background-color: #f1c40f;
   }
