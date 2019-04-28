@@ -35,7 +35,7 @@ function onSignIn(googleUser) {
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     
                     <div>
-                        <div>
+                        <div class="label-wrapper">
                             <span class="genre-label ${respObj.genre.toLowerCase()}">
                                 ${respObj.genre.toUpperCase()}
                             </span>
@@ -262,7 +262,7 @@ $(document).ready(function () {
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     
                     <div>
-                        <div>
+                        <div class="label-wrapper">
                             <span class="genre-label ${respObj.genre.toLowerCase()}">
                                 ${respObj.genre.toUpperCase()}
                             </span>

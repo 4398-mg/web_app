@@ -271,3 +271,18 @@ audio{
       height: 70px;
       width: auto;
   }
+
+  .label-wrapper{
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  .genre-label{
+      color: white;
+      background-color: red;
+  }
+
+  .tempo-label{
+      color: white;
+      background-color: blue;
+  }
