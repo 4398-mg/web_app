@@ -39,7 +39,7 @@ function onSignIn(googleUser) {
                             <span class="genre-label ${respObj.genre.toLowerCase()}">
                                 ${respObj.genre.toUpperCase()}
                             </span>
-                            <span class="tempo-label ${respObj.tempo.toLowerCase()}>
+                            <span class="tempo-label ${respObj.tempo.toLowerCase()}">
                                 ${respObj.tempo.toUpperCase()}
                             </span>
                         </div>
@@ -266,7 +266,7 @@ $(document).ready(function () {
                             <span class="genre-label ${respObj.genre.toLowerCase()}">
                                 ${respObj.genre.toUpperCase()}
                             </span>
-                            <span class="tempo-label ${respObj.tempo.toLowerCase()}>
+                            <span class="tempo-label ${respObj.tempo.toLowerCase()}">
                                 ${respObj.tempo.toUpperCase()}
                             </span>
                         </div>
