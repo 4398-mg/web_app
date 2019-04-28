@@ -34,13 +34,14 @@ function onSignIn(googleUser) {
             let htmlHistoryObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
-                        <span class="genre-label ${respObj.genre}">
-                            ${respObj.genre}
+                        <span class="genre-label ${respObj.genre.toLowerCase()}">
+                            ${respObj.genre.toUpperCase()}
                         </span>
-                        <span class="tempo-label ${respObj.tempo}>
-                            ${respObj.tempo[0]}
+                        <span class="tempo-label ${respObj.tempo.toLowerCase()}>
+                            ${respObj.tempo.toUpperCase()}
                         </span>
                     </div>
+                    <br />
                     <div>
                         <span id="${respObj.song_id}-name">
                             ${respObj.song_name}
@@ -259,13 +260,14 @@ $(document).ready(function () {
                 historyObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
-                        <span class="genre-label ${respObj.genre}">
-                            ${respObj.genre}
+                        <span class="genre-label ${respObj.genre.toLowerCase()}">
+                            ${respObj.genre.toUpperCase()}
                         </span>
-                        <span class="tempo-label ${respObj.tempo}>
-                            ${respObj.tempo[0]}
+                        <span class="tempo-label ${respObj.tempo.toLowerCase()}>
+                            ${respObj.tempo.toUpperCase()}
                         </span>
                     </div>
+                    <br />
                     <div>
                         <span id="${respObj.song_id}-name">
                             ${respObj.song_name}
