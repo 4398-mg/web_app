@@ -34,6 +34,14 @@ function onSignIn(googleUser) {
             let htmlHistoryObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
                     <div>
+                        <span class="genre-label ${respObj.genre}">
+                            ${respObj.genre}
+                        </span>
+                        <span class="tempo-label ${respObj.tempo}>
+                            ${respObj.tempo[0]}
+                        </span>
+                    </div>
+                    <div>
                         <span id="${respObj.song_id}-name">
                             ${respObj.song_name}
                         </span>
@@ -250,6 +258,14 @@ $(document).ready(function () {
             } else {
                 historyObj = `
                 <li class="history-entry" id="${respObj.song_id}-entry">
+                    <div>
+                        <span class="genre-label ${respObj.genre}">
+                            ${respObj.genre}
+                        </span>
+                        <span class="tempo-label ${respObj.tempo}>
+                            ${respObj.tempo[0]}
+                        </span>
+                    </div>
                     <div>
                         <span id="${respObj.song_id}-name">
                             ${respObj.song_name}
