@@ -17,7 +17,7 @@ To install and build the web app you must first clone this repository (see below
 You must then install the requirements for the project
 "pip3 install -r requirements.txt"
 From there you should be able to run the web app through the command
-"sudo pytho3 manage.py gunicorn"
+"sudo python3 manage.py gunicorn"
 
 Configuration:
 The only configuration that needs to be set for the web app is by setting the API URL in the bottom of app/template/index.html (this tells the web app where to make requests to the REST API)
